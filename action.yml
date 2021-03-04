@@ -1,0 +1,9 @@
+name: Release PR Validation
+description: "Validate Release PR for merge on scheduled day"
+branding:
+  icon: "git-merge"
+  color: purple
+runs:
+  using: "node12"
+  main: "dist/index.js"
+

@@ -1,0 +1,20 @@
+{
+  "name": "Validate Release PR",
+  "version": "1.0.0",
+  "description": "GitHub Action to validate release PR",
+  "repository": "https://github.com/rlin-makespace/ReleasePRValidation.git",
+  "keywords": [
+    "github-action"
+  ],
+  "author": "RuiJia Lin",
+  "scripts": {
+    "build": "ncc build index.js -o dist"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "^0.25.1"
+  },
+  "dependencies": {
+    "@actions/core": "^1.2.6",
+    "@octokit/action": "^3.1.2"
+  }
+}
