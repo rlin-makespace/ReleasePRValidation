@@ -37,17 +37,5 @@ async function handlePullRequest() {
         process.exit(1);
     }
     
-    const { data } = await octokit.checks.create({
-        owner: eventPayload.repository.owner.login,
-        repo: eventPayload.repository.name,
-        name: "Auto Merge Scheduled",
-        head_sha: eventPayload.pull_request.head.sha,
-        status: "in_progress",
-        output: {
-            title: `Scheduled to be merged`,
-            summary: ""
-        },
-    });
-    
-    core.info(`Check run created: ${data.html_url}`);
+    core.info(`${data.html_url} passed Release PR Validation.`);
 }
