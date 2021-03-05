@@ -1,18 +1,15 @@
 module.exports = handlePullRequest;
 
 const core = require("@actions/core");
-const { Octokit } = require("@octokit/action");
 
 /**
  * Handle "pull_request" event
  */
 async function handlePullRequest() {
-    const octokit = new Octokit();
-    
     const eventPayload = require(process.env.GITHUB_EVENT_PATH);
     
     core.info(
-              `Handling pull request ${eventPayload.action} for ${eventPayload.pull_request.html_url}`
+              `Validating pull request for ${eventPayload.pull_request.html_url}`
               );
     
     if (eventPayload.pull_request.state !== "open") {
@@ -21,7 +18,7 @@ async function handlePullRequest() {
     }
     
     if (eventPayload.pull_request.head.repo.fork) {
-        core.setFailed(`Setting a scheduled merge is not allowed from forks`);
+        core.setFailed(`Setting a auto merge is not allowed from forks`);
         process.exit(1);
     }
     
